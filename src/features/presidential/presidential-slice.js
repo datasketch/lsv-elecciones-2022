@@ -74,6 +74,34 @@ const presidentialSlice = createSlice({
       state.filters.responsibilityForDecisiveDecisionsForTheCountry = action.payload;
       state.filtered = highlightCandidates(state);
     },
+    filterByAdoptionBySameSexCouples(state, action) {
+      state.filters.adoptionBySameSexCouples = action.payload;
+      state.filtered = highlightCandidates(state);
+    },
+    filterByChurchTax(state, action) {
+      state.filters.churchTax = action.payload;
+      state.filtered = highlightCandidates(state);
+    },
+    filterByIncreasePensionAge(state, action) {
+      state.filters.increasePensionAge = action.payload;
+      state.filtered = highlightCandidates(state);
+    },
+    filterByBackToGlyph(state, action) {
+      state.filters.backToGlyph = action.payload;
+      state.filtered = highlightCandidates(state);
+    },
+    filterByFracking(state, action) {
+      state.filters.fracking = action.payload;
+      state.filtered = highlightCandidates(state);
+    },
+    filterByRegulateMarijuana(state, action) {
+      state.filters.regulateMarijuana = action.payload;
+      state.filtered = highlightCandidates(state);
+    },
+    filterByRulingOnAbortion(state, action) {
+      state.filters.rulingOnAbortion = action.payload;
+      state.filtered = highlightCandidates(state);
+    },
   },
 });
 
@@ -82,6 +110,13 @@ export const {
   filterByRaiseToWealthTax,
   filterByOppositionOrSupportToGovernment,
   filterByVoteInPlebiscite, filterByResponsibilityForDecisiveDecisionsForTheCountry,
+  filterByAdoptionBySameSexCouples,
+  filterByChurchTax,
+  filterByIncreasePensionAge,
+  filterByBackToGlyph,
+  filterByFracking,
+  filterByRegulateMarijuana,
+  filterByRulingOnAbortion,
 } = presidentialSlice.actions;
 
 export const selectAllPresidentialCandidates = (state) => state.presidential.filtered;
@@ -117,5 +152,19 @@ export const selectOppositionOrSupportToGovernment = (state) => getCategories(st
 export const selectVoteInPlebiscite = (state) => getCategories(state.presidential.all, 'voteInThePlebiscite').filter((record) => record.toLowerCase() !== 'sin datos');
 
 export const selectResponsibilityForDecisiveDecisionsForTheCountry = (state) => getCategories(state.presidential.all, 'responsibilityForDecisiveDecisionsForTheCountry').filter((record) => record.toLowerCase() !== 'sin datos');
+
+export const selectAdoptionBySameSexCouples = (state) => getCategories(state.presidential.all, 'adoptionBySameSexCouples');
+
+export const selectChurchTax = (state) => getCategories(state.presidential.all, 'churchTax');
+
+export const selectIncreasePensionAge = (state) => getCategories(state.presidential.all, 'increasePensionAge');
+
+export const selectBackToGlyph = (state) => getCategories(state.presidential.all, 'backToGlyph');
+
+export const selectFracking = (state) => getCategories(state.presidential.all, 'fracking');
+
+export const selectRegulateMarijuana = (state) => getCategories(state.presidential.all, 'regulateMarijuana');
+
+export const selectRulingOnAbortion = (state) => getCategories(state.presidential.all, 'rulingOnAbortion');
 
 export default presidentialSlice.reducer;

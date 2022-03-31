@@ -93,7 +93,13 @@ const mapper = {
   'Nombre fórmula': 'vicepresident',
   'Link perfil fórmula': 'vicepresidentProfileLink',
   'Foto fórmula': 'vicepresidentPhoto',
-
+  'Adopción por parte de parejas el mismo sexo': 'adoptionBySameSexCouples',
+  'Impuesto a las iglesias': 'churchTax',
+  'Aumentar la edad de pensión': 'increasePensionAge',
+  'Volver al glifosato': 'backToGlyph',
+  Fracking: 'fracking',
+  'Regular la marihuana recreativa': 'regulateMarijuana',
+  'Fallo sobre el aborto': 'rulingOnAbortion',
 };
 
 export default mapper;

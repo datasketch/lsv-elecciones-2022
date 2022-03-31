@@ -1,17 +1,31 @@
 import { useDispatch, useSelector } from 'react-redux';
+import FilterSelect from '../congress/FilterSelect';
 import {
+  filterByAdoptionBySameSexCouples,
+  filterByBackToGlyph,
+  filterByChurchTax,
+  filterByFracking,
+  filterByIncreasePensionAge,
   filterByOppositionOrSupportToGovernment,
   filterByRaiseToWealthTax,
+  filterByRegulateMarijuana,
   filterByResponsibilityForDecisiveDecisionsForTheCountry,
+  filterByRulingOnAbortion,
   filterBySupportToStrike,
   filterByVoteInPlebiscite,
+  selectAdoptionBySameSexCouples,
+  selectBackToGlyph,
+  selectChurchTax,
+  selectFracking,
+  selectIncreasePensionAge,
   selectOppositionOrSupportToGovernment,
   selectRaiseWealthTax,
+  selectRegulateMarijuana,
   selectResponsibilityForDecisiveDecisionsForTheCountry,
+  selectRulingOnAbortion,
   selectSupportToStrike,
   selectVoteInPlebiscite,
 } from '../../features/presidential/presidential-slice';
-import FilterSelect from '../congress/FilterSelect';
 
 function FiltersSection() {
   const dispatch = useDispatch();
@@ -58,6 +72,62 @@ function FiltersSection() {
           onChange={(e) => dispatch(
             filterByResponsibilityForDecisiveDecisionsForTheCountry(e.target.value),
           )}
+          placeholder="Seleccione una opción"
+        />
+        <FilterSelect
+          id="adopcion-parejas-mismo-sexo"
+          label="Adopción por parte de parejas del mismo sexo"
+          className="order-6"
+          options={useSelector(selectAdoptionBySameSexCouples)}
+          onChange={(e) => dispatch(filterByAdoptionBySameSexCouples(e.target.value))}
+          placeholder="Seleccione una opción"
+        />
+        <FilterSelect
+          id="impuesto-iglesias"
+          label="Impuesto a las iglesias"
+          className="order-7"
+          options={useSelector(selectChurchTax)}
+          onChange={(e) => dispatch(filterByChurchTax(e.target.value))}
+          placeholder="Seleccione una opción"
+        />
+        <FilterSelect
+          id="aumentar-edad-pension"
+          label="Aumentar la edad pensional"
+          className="order-8"
+          options={useSelector(selectIncreasePensionAge)}
+          onChange={(e) => dispatch(filterByIncreasePensionAge(e.target.value))}
+          placeholder="Seleccione una opción"
+        />
+        <FilterSelect
+          id="glifosato"
+          label="Volver al glifosato"
+          className="order-9"
+          options={useSelector(selectBackToGlyph)}
+          onChange={(e) => dispatch(filterByBackToGlyph(e.target.value))}
+          placeholder="Seleccione una opción"
+        />
+        <FilterSelect
+          id="fracking"
+          label="Fracking"
+          className="order-10"
+          options={useSelector(selectFracking)}
+          onChange={(e) => dispatch(filterByFracking(e.target.value))}
+          placeholder="Seleccione una opción"
+        />
+        <FilterSelect
+          id="regular-la-marihuana"
+          label="Regular marihuana recreativa"
+          className="order-11"
+          options={useSelector(selectRegulateMarijuana)}
+          onChange={(e) => dispatch(filterByRegulateMarijuana(e.target.value))}
+          placeholder="Seleccione una opción"
+        />
+        <FilterSelect
+          id="fallo-aborto"
+          label="Fallo sobre el aborto"
+          className="order-12"
+          options={useSelector(selectRulingOnAbortion)}
+          onChange={(e) => dispatch(filterByRulingOnAbortion(e.target.value))}
           placeholder="Seleccione una opción"
         />
       </div>
