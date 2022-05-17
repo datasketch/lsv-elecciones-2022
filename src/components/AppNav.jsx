@@ -18,14 +18,14 @@ function AppNav() {
         onClick={() => dispatch(selectTab('ponderador'))}
       />
       <AppButton
-        label="Así quedó el Congreso"
-        inverse={activeTab !== 'congreso'}
-        onClick={() => dispatch(selectTab('congreso'))}
-      />
-      <AppButton
         label="Jugar con Cupibot presidencial"
         inverse
         onClick={() => window.open('https://cupibot.lasillavacia.com', '_blank').focus()}
+      />
+      <AppButton
+        label="Así quedó el Congreso"
+        inverse={activeTab !== 'congreso'}
+        onClick={() => dispatch(selectTab('congreso'))}
       />
       {/* <AppButton
         label="Elecciones Presidenciales"
