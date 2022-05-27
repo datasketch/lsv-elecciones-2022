@@ -30,10 +30,6 @@ function CandidateCardModalDataDesktop({ candidate }) {
     <>
       {blocks.map(([label, field, conf = {}], index) => {
         let fieldText = field && candidate[field] ? <p>{candidate[field]}</p> : null;
-        console.log(label);
-        console.log(field);
-        console.log(fieldText);
-        console.log('.........');
         if (conf.separator && fieldText) {
           fieldText = candidate[field].split(conf.separator).map((text) => (
             <p key={text}>{text}</p>
@@ -65,6 +61,7 @@ function CandidateCardModalDataDesktop({ candidate }) {
             {conf.embed && candidate[conf.embed] && (
             <div
               className="mt-4 flex items-center justify-center"
+              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 __html: candidate[conf.embed],
               }}
