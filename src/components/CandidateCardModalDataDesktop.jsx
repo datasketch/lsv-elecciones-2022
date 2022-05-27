@@ -30,6 +30,12 @@ function CandidateCardModalDataDesktop({ candidate }) {
     <>
       {blocks.map(([label, field, conf = {}], index) => {
         let fieldText = field && candidate[field] ? <p>{candidate[field]}</p> : null;
+        let showTitle = true;
+        if (conf.title) {
+          showTitle = (conf.conditions || []).reduce((result, $field) => (
+            result && !!candidate[$field]
+          ), true);
+        }
         if (conf.separator && fieldText) {
           fieldText = candidate[field].split(conf.separator).map((text) => (
             <p key={text}>{text}</p>
@@ -41,11 +47,8 @@ function CandidateCardModalDataDesktop({ candidate }) {
         return (
           // eslint-disable-next-line react/no-array-index-key
           <React.Fragment key={index}>
-            {conf.title && (
-            <h3 className={classNames('font-martin text-2xl uppercase text-jet border-l-2 border-jet pl-2 leading-none', {
-              'mt-8': index > 0,
-            })}
-            >
+            {conf.title && showTitle && (
+            <h3 className="font-martin text-2xl uppercase text-jet border-l-2 border-jet pl-2 leading-none mt-4">
               {label}
             </h3>
             )}

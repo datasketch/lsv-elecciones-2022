@@ -76,7 +76,7 @@ const mapper = {
   'Lugar de nacimiento': 'placeOfBirth',
   'Ha sido gobernador o alcalde': 'hasBeenGovernorOrMayor',
   'Se había lanzado antes a la Presidencia': 'hadPreviouslyRunForThePresidency',
-  'Voto en el plebiscito': 'voteInThePlebiscite',
+  '¿QUÉ PIENSA? Voto en el plebiscito': 'voteInThePlebiscite',
   'Despenalizar el aborto': 'decriminalizingAbortion',
   'Máximo de personas a su cargo': 'maximumNumberOfDependents',
   'Responsabilidad de decisiones determinantes para el país':
