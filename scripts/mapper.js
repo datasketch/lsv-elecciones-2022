@@ -90,7 +90,7 @@ const mapper = {
     'forcingPublicOfficialsToGetVaccinated',
   'Favorabilidad con la que terminó el más alto y reciente cargo ejecutivo':
     'mostRecentFavorability',
-  'Nombre fórmula': 'vicepresident',
+  'FÓRMULA VICEPRESIDENCIAL Nombre fórmula': 'vicepresident',
   'Link perfil fórmula': 'vicepresidentProfileLink',
   'Foto fórmula': 'vicepresidentPhoto',
   'Adopción por parte de parejas el mismo sexo': 'adoptionBySameSexCouples',
@@ -100,6 +100,23 @@ const mapper = {
   Fracking: 'fracking',
   'Regular la marihuana recreativa': 'regulateMarijuana',
   'Fallo sobre el aborto': 'rulingOnAbortion',
+  // Primera vuelta presidencial
+  'QUÉ PROPONE Sus propuestas bomba:': 'majorProposals',
+  'Saber más.': 'majorProposalsAbout',
+  'Carretómetro a su bandera:': 'lieMesaure',
+  'Link carretómetro (ponerlo en donde dice sus propuestas para tk)': 'lieMeasureAbout',
+  'CÓMO GOBERNÓ Favorabilidad al final de su alcaldía:': 'favorabilityAsMajor',
+  'Gobernó con:': 'governWith',
+  'Talante:': 'frameOfMind',
+  'Gerencia:': 'management',
+  'Relación con otros poderes:': 'relationWithOtherPowers',
+  'Logros:': 'achievements',
+  'Video embebido': 'video',
+  'Saber más como gobernó:': 'governAbout',
+  'SOMBRAS Su mayor lunar:': 'greaterMole',
+  'Link su mayor lunar (ponerlo en la frase no como sabber más)': 'greaterMoleAbout',
+  'Encarna el riesgo de:': 'riskOf',
+  'Link (ponerlo en la primera parte de la frase del riesgo que encarnana)': 'riskOfAbout',
 };
 
 export default mapper;

@@ -22,9 +22,8 @@ function AppHeader() {
       <div className="max-w-xl mx-auto text-center mt-6 text-sm">
         {activeTab === 'consultas' && (
           <>
-            <p>
-              Estos son los candidatos que van a primera vuelta.
-              <span className="italic">Haga click y empiece a compararlos</span>
+            <p className="text-lg">
+              Haga click y compare cómo gobernaron, sus propuestas y sus lunares
             </p>
             {/* <p className="italic mt-4">
               Haga click en los candidatos y empiece a compararlos

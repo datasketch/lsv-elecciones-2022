@@ -28,10 +28,55 @@ function CandidateCardModalDataDesktop({ candidate }) {
 
   return (
     <>
-      {/* // TODO: enable when data available */}
+      {blocks.map(([label, field, conf = {}], index) => {
+        let fieldText = field && candidate[field] ? <p>{candidate[field]}</p> : null;
+        console.log(label);
+        console.log(field);
+        console.log(fieldText);
+        console.log('.........');
+        if (conf.separator && fieldText) {
+          fieldText = candidate[field].split(conf.separator).map((text) => (
+            <p key={text}>{text}</p>
+          ));
+        }
+        if (fieldText && !conf.separator && conf.readMore && conf.inline) {
+          fieldText = <p><a href={candidate[conf.readMore]} className="text-dodger-blue" target="_blank" rel="noopener noreferrer">{candidate[field]}</a></p>;
+        }
+        return (
+          // eslint-disable-next-line react/no-array-index-key
+          <React.Fragment key={index}>
+            {conf.title && (
+            <h3 className={classNames('font-martin text-2xl uppercase text-jet border-l-2 border-jet pl-2 leading-none', {
+              'mt-8': index > 0,
+            })}
+            >
+              {label}
+            </h3>
+            )}
+            {!conf.title && fieldText && (
+            <p className={classNames('text-dim-gray', {
+              'mt-4': index > 0,
+            })}
+            >
+              {label}
+            </p>
+            )}
+            {fieldText}
+            {conf.embed && candidate[conf.embed] && (
+            <div
+              className="mt-4 flex items-center justify-center"
+              dangerouslySetInnerHTML={{
+                __html: candidate[conf.embed],
+              }}
+            />
+            )}
+            {conf.readMore && candidate[conf.readMore] && !conf.inline && <p className="mt-2"><a href={candidate[conf.readMore]} className="text-dodger-blue" target="_blank" rel="noopener noreferrer">Saber más</a></p>}
+          </React.Fragment>
+        );
+      })}
       {activeTab === 'consultas' && candidate.vicepresident && (
         <>
-          <p className="font-martin text-2xl uppercase text-jet border-l-2 border-jet pl-2 leading-none">Fórmula presidencial</p>
+          <p className="font-martin text-2xl uppercase text-jet border-l-2 border-jet pl-2 leading-none mt-8">Fórmula vicepresidencial</p>
           <div className="flex items-center mt-4 mb-8 space-x-2">
             <img
               className="w-20 h-20 max-w-full object-cover object-center"
@@ -50,21 +95,6 @@ function CandidateCardModalDataDesktop({ candidate }) {
           </div>
         </>
       )}
-      {blocks.map(([label, field], index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <React.Fragment key={index}>
-          <p
-            className={classNames({
-              'text-dim-gray': field,
-              'mt-4': index > 0,
-              'font-martin text-2xl uppercase text-jet border-l-2 border-jet pl-2 leading-none': !field,
-            })}
-          >
-            {label}
-          </p>
-          {field && <p>{candidate[field]}</p>}
-        </React.Fragment>
-      ))}
     </>
   );
 }
