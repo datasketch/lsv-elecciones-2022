@@ -1,16 +1,30 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { setSecondaryCandidate, toggleMainModalWindow } from '../features/modal/modal-slice';
 import { selectActiveTab, selectTab } from '../features/nav/nav-slice';
+import { selectPresidentialCandidateById } from '../features/presidential/presidential-slice';
 import AppButton from './AppButton';
 
 function AppNav() {
   const dispatch = useDispatch();
   const activeTab = useSelector(selectActiveTab);
+
+  const gp = useSelector(
+    (state) => selectPresidentialCandidateById(state, 'gustavo-petro-urrego'),
+  );
+  const rh = useSelector(
+    (state) => selectPresidentialCandidateById(state, 'rodolfo-hernandez-suarez'),
+  );
+  const handleClick = () => {
+    dispatch(selectTab('consultas'));
+    dispatch(toggleMainModalWindow(gp));
+    dispatch(setSecondaryCandidate(rh));
+  };
   return (
     <nav className="flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0 md:justify-center">
       <AppButton
         label="Candidatos presidenciales"
         inverse={activeTab !== 'consultas'}
-        onClick={() => dispatch(selectTab('consultas'))}
+        onClick={handleClick}
       />
       <AppButton
         label="Ponderador de encuestas"

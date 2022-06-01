@@ -9,12 +9,14 @@ import { selectCandidateById } from './features/candidates/candidates-slice';
 import {
   selectMainModalWindow,
   selectShowCoalitionModalWindow,
+  setSecondaryCandidate,
   toggleMainModalWindow,
 } from './features/modal/modal-slice';
 import { hideNav, selectActiveTab, selectTab } from './features/nav/nav-slice';
 import useResize from './hooks/use-resize';
 import AppPresidentialElection from './components/presidential/AppPresidentialElections';
 import Survey from './components/Survey';
+import { selectPresidentialCandidateById } from './features/presidential/presidential-slice';
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +25,12 @@ function App() {
   const activeTab = useSelector(selectActiveTab);
   const featuredCandidate = useSelector(
     (state) => selectCandidateById(state, window.LSV_FEATURED_CANDIDATE_ID),
+  );
+  const gp = useSelector(
+    (state) => selectPresidentialCandidateById(state, 'gustavo-petro-urrego'),
+  );
+  const rh = useSelector(
+    (state) => selectPresidentialCandidateById(state, 'rodolfo-hernandez-suarez'),
   );
 
   useEffect(() => {
@@ -41,6 +49,10 @@ function App() {
       const [, tab] = tabMatch;
       if (['congreso', 'consultas', 'elecciones-presidenciales', 'ponderador'].includes(tab.toLowerCase())) {
         dispatch(selectTab(tab));
+        if (tab.toLowerCase() === 'consultas') {
+          dispatch(toggleMainModalWindow(gp));
+          dispatch(setSecondaryCandidate(rh));
+        }
       }
     }
   }, [dispatch]);

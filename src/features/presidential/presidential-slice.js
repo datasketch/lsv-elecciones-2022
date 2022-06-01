@@ -1,5 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { createSelector } from 'reselect';
 import candidates from '../../data/presidential.json';
 
 const candidatesData = candidates.map((c) => ({ ...c, highlight: true }));
@@ -142,6 +144,12 @@ export const selectSortedPresidentialCandidates = (state) => state.presidential.
     if (a.fullname.toLowerCase() < b.fullname.toLowerCase()) return -1;
     return 0;
   });
+
+export const selectPresidentialCandidateById = createSelector(
+  (state) => state.presidential.all,
+  (_, id) => id,
+  (_candidates, id) => _candidates.find((c) => c.id === id),
+);
 
 export const selectSupportToStrike = (state) => getCategories(state.presidential.all, 'supportedTheStrike').filter((record) => record.toLowerCase() !== 'sin datos');
 
